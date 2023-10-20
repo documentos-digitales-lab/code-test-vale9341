@@ -19,6 +19,7 @@ RSpec.describe CustomersController, type: :controller do
 
   describe "POST #create" do
     it "creates a new customer" do
+      customer = create(:customer, id: 1, rfc: 'AAA010101000')
       expect { post(:create) }.to change(Customer, :count).by(1)
     end
 
