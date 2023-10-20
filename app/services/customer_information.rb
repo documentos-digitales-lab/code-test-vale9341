@@ -7,13 +7,13 @@ class CustomerInformation
 
   def save
     body = get_request
-    customer.update(first_name: body["firstName"], last_name: body["lastName"])
+    customer.update(first_name: body&.[]("firstName"), last_name: body&.[]("lastName"))
   end
 
   private
 
   def get_request
-    response = RestClient.get("https://dummyjson.com/users/#{customer.id}", { accept: :json })
-    JSON.parse(response.body)
+    response = RestClient.get("https://dummyjson.com/users/#{customer&.id}")
+    JSON.parse(response&.body)
   end
 end
