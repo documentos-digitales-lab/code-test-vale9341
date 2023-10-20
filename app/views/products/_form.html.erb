@@ -21,8 +21,7 @@
         product_item_target: "unitPrice"
       } %>
   </div>
-
- <div>
+  <div>
     <%= label_tag "products[][amount]", "Amount:" %>
     <%= number_field_tag "products[][amount]", nil,
       class: "product_amounts",
@@ -31,6 +30,5 @@
         action:"update-amounts@window->product-form#calculateSubTotal",
         product_item_target: "amount"
       } %>
-  </div> 
-
+  </div>
 </div>
