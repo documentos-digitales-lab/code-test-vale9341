@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "customers#new"
+
+  resources :customers do
+    resources :products, only: %i[new create]
+  end
 end

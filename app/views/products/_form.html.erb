@@ -1,0 +1,36 @@
+<div id="product-items" class="product-items" data-controller="product-item">
+  <p>Item # <%= index %></p>
+  <div>
+    <%= label_tag "products[][quantity]", "Quantity:" %>
+    <%= number_field_tag "products[][quantity]", nil,
+      data: {
+        action: "change->product-item#calculateAmount",
+        product_item_target: "quantity"
+      } %>
+  </div>
+  <div>
+    <%= label_tag "products[][product]", "Product/Service:" %>
+    <%= text_field_tag "products[][product]" %>
+  </div>
+  <div>
+    <%= label_tag "products[][unit_price]", "Unit Price:" %>
+    <%= number_field_tag "products[][unit_price]", nil,
+      step: :any,
+      data: {
+        action: "change->product-item#calculateAmount",
+        product_item_target: "unitPrice"
+      } %>
+  </div>
+
+ <div>
+    <%= label_tag "products[][amount]", "Amount:" %>
+    <%= number_field_tag "products[][amount]", nil,
+      class: "product_amounts",
+      step: :any,
+      data: {
+        action:"update-amounts@window->product-form#calculateSubTotal",
+        product_item_target: "amount"
+      } %>
+  </div> 
+
+</div>
