@@ -1,0 +1,25 @@
+Please add your products and click on Create:
+
+<%= form_tag(customer_products_path, remote: true, id: "product-form", data: { controller: "product-form" }) do |f| %>
+  <% (1..2).each do |i| %>
+    <%= render partial: "form",
+      locals: {
+        index: i
+      }
+    %>
+  <% end %>
+  <br>
+  <div>
+    <strong>Sub Total: </strong><span data-product-form-target="subtotal">0</span>
+  </div>
+  <div>
+    <strong>Tax: </strong><span data-product-form-target="tax">0</span>
+  </div>
+  <div>
+    <strong>Total: </strong><span data-product-form-target="total">0</span>
+  </div>
+  <div>
+    <span class="msg-amount" data-product-form-target="amountMessage"></span>
+  </div>
+  <%= submit_tag "Create" %>
+<% end %>

@@ -1,6 +1,7 @@
+<h3>¡¡Hello <%= @customer.full_name %>!!</h3>
 <p>Please complete all of the steps on this page:</p>
 <ul>
-  <li>Create An Invoice</li>
+  <li><%= link_to "Create An Invoice", new_customer_product_path(params[:id]) %></li>
 </ul>
 <%= form_for(:customer, url: customer_path, method: :put) do |f| %>
   <%= f.submit "Complete Process" %>
